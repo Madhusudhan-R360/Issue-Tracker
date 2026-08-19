@@ -1,9 +1,9 @@
-function IssueCard() {
+function IssueCard({ title, priority, status }) {
   return (
     <div>
-      <h3>Login API Bug</h3>
-      <p>Priority: High</p>
-      <p>Status: Open</p>
+      <h3>{title}</h3>
+      <p>Priority: {priority}</p>
+      <p>Status: {status}</p>
     </div>
   );
 }
