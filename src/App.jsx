@@ -1,50 +1,51 @@
+import { useState } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import IssueCard from "./components/IssueCard";
 import Footer from "./components/Footer";
-import DeveloperCard from "./components/DeveloperCard";
+
 function App() {
+  const [issues, setIssues] = useState([
+    {
+      title: "Login API Bug",
+      priority: "High",
+      status: "Open",
+    },
+    {
+      title: "Payment Gateway Error",
+      priority: "Medium",
+      status: "In Progress",
+    },
+  ]);
+
+  const addIssue = () => {
+  const newIssue = {
+    title: "MongoDB Timeout",
+    priority: "Low",
+    status: "Open",
+  };
+
+  setIssues([...issues, newIssue]);
+};
+
   return (
     <div>
       <Header />
 
       <Sidebar />
 
-     <DeveloperCard
-  name="Madhu"
-  role="Backend Intern"
-  experience={1}
-/>
+    <button onClick={addIssue}>
+  Add Issue
+</button>
 
-     <IssueCard
-  title="Login API Bug"
-  priority="High"
-  status="Open"
-/>
+      {issues.map((issue) => (
+        <IssueCard
+          title={issue.title}
+          priority={issue.priority}
+          status={issue.status}
+        />
+      ))}
 
-<IssueCard
-  title="Payment Failure"
-  priority="Medium"
-  status="In Progress"
-/>
-
-<IssueCard
-  title="Redis Cache Miss"
-  priority="Low"
-  status="Resolved"
-/>
-
-<IssueCard
-  title="MongoDB Timeout"
-  priority="Critical"
-  status="Open"
-/>
-
-<IssueCard
-  title="JWT Validation Error"
-  priority="High"
-  status="Testing"
-/>
       <Footer />
     </div>
   );
