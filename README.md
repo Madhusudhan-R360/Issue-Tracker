@@ -57,3 +57,115 @@ Example:
   status="Open"
 />
 ```
+
+# Day 3 - State (useState)
+
+## What I Learned
+
+- React State is used to store data that can change over time.
+- `useState()` allows React to remember values between renders.
+- Updating state using the setter function automatically updates the UI.
+- Arrays can be stored in state and rendered dynamically using `.map()`.
+- User interactions can update state through event handlers.
+
+## Concepts Covered
+
+- useState
+- State Management
+- Event Handling (`onClick`)
+- Rendering Lists with `.map()`
+- Updating Arrays in State
+
+## Project Update
+
+### Before
+
+Issue cards were hardcoded:
+
+```jsx
+<IssueCard
+  title="Login API Bug"
+  priority="High"
+  status="Open"
+/>
+
+<IssueCard
+  title="Payment Gateway Error"
+  priority="Medium"
+  status="In Progress"
+/>
+```
+
+### After
+
+Issues are stored in state:
+
+```jsx
+const [issues, setIssues] = useState([
+  {
+    title: "Login API Bug",
+    priority: "High",
+    status: "Open",
+  },
+  {
+    title: "Payment Gateway Error",
+    priority: "Medium",
+    status: "In Progress",
+  },
+]);
+```
+
+Rendered dynamically:
+
+```jsx
+{
+  issues.map((issue) => (
+    <IssueCard
+      title={issue.title}
+      priority={issue.priority}
+      status={issue.status}
+    />
+  ));
+}
+```
+
+Added an "Add Issue" button:
+
+```jsx
+<button onClick={addIssue}>
+  Add Issue
+</button>
+```
+
+## Key Takeaways
+
+- State is the source of truth for UI data.
+- Never modify state directly.
+- Use the setter function (`setIssues`) to update state.
+- `.map()` is commonly used to render lists of components.
+- React automatically re-renders when state changes.
+
+## Current Features
+
+✅ Dynamic Issue List
+
+✅ Add Issue Functionality
+
+✅ State Management with `useState`
+
+✅ Dynamic Rendering with `.map()`
+
+## Next Up
+
+**Day 4 - Forms & Event Handling**
+
+- Input Fields
+- `onChange`
+- Controlled Components
+- Create Issue Form
+- Add Custom Issues from User Input
+
+### Progress
+
+✅ Day 3 Completed  
+📈 Progress: 3/21 Days
