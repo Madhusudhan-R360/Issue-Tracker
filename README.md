@@ -155,17 +155,70 @@ Added an "Add Issue" button:
 
 ✅ Dynamic Rendering with `.map()`
 
+# Day 4 - Forms & Event Handling
+
+## What I Learned
+
+- React handles form inputs using state.
+- `onChange` is used to capture user input.
+- Controlled Components use React state as the source of truth.
+- Form data can be used to create new UI elements dynamically.
+- State can be reset after form submission.
+
+## Concepts Covered
+
+- Forms
+- Input Fields
+- onChange
+- Controlled Components
+- Form State
+- Event Handling
+
+## Project Update
+
+Added issue creation form.
+
+### Features Added
+
+✅ Issue Title Input
+
+✅ Priority Input
+
+✅ Add Issue Button
+
+✅ Dynamic Issue Creation
+
+✅ Auto-Clear Inputs After Submission
+
+## Key Takeaways
+
+- Input fields should be connected to state.
+- `onChange` updates state whenever input changes.
+- Form data can be used to create new objects.
+- React state drives the UI.
+
+## Current Features
+
+✅ Dynamic Issue List
+
+✅ Add Custom Issues
+
+✅ Form Handling
+
+✅ State Management
+
+✅ Event Handling
+
 ## Next Up
 
-**Day 4 - Forms & Event Handling**
+**Day 5 - Conditional Rendering**
 
-- Input Fields
-- `onChange`
-- Controlled Components
-- Create Issue Form
-- Add Custom Issues from User Input
+- Show/Hide Components
+- Empty State Messages
+- Loading States
+- Conditional UI
 
 ### Progress
 
-✅ Day 3 Completed  
-📈 Progress: 3/21 Days
+✅ Day 4 Completed  
+📈 Progress: 4/21 Days
