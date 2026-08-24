@@ -18,15 +18,21 @@ function App() {
     },
   ]);
 
-  const addIssue = () => {
-  const newIssue = {
-    title: "MongoDB Timeout",
-    priority: "Low",
-    status: "Open",
-  };
+  const [title, setTitle] = useState("");
+  const [priority, setPriority] = useState("");
 
-  setIssues([...issues, newIssue]);
-};
+  const addIssue = () => {
+    const newIssue = {
+      title: title,
+      priority: priority,
+      status: "Open",
+    };
+
+    setIssues([...issues, newIssue]);
+
+    setTitle("");
+    setPriority("");
+  };
 
   return (
     <div>
@@ -34,12 +40,27 @@ function App() {
 
       <Sidebar />
 
-    <button onClick={addIssue}>
-  Add Issue
-</button>
+      <input
+        type="text"
+        placeholder="Issue Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-      {issues.map((issue) => (
+      <input
+        type="text"
+        placeholder="Priority"
+        value={priority}
+        onChange={(e) => setPriority(e.target.value)}
+      />
+
+      <button onClick={addIssue}>
+        Add Issue
+      </button>
+
+      {issues.map((issue, index) => (
         <IssueCard
+          key={index}
           title={issue.title}
           priority={issue.priority}
           status={issue.status}
