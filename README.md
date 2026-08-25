@@ -209,16 +209,42 @@ Added issue creation form.
 
 ✅ Event Handling
 
-## Next Up
+# Day 5 - Conditional Rendering
 
-**Day 5 - Conditional Rendering**
+## What I Learned
 
-- Show/Hide Components
-- Empty State Messages
-- Loading States
-- Conditional UI
+- React can render different UI based on conditions.
+- Ternary operators are commonly used for conditional rendering.
+- Logical AND (`&&`) can be used to show components conditionally.
+- UI should react to changes in application state.
 
-### Progress
+## Concepts Covered
 
-✅ Day 4 Completed  
-📈 Progress: 4/21 Days
+- Conditional Rendering
+- Ternary Operator
+- Logical AND (`&&`)
+- Dynamic UI Updates
+
+## Project Update
+
+### Features Added
+
+✅ Delete Issue
+
+✅ Empty State Handling
+
+✅ "No Issues Found" Message
+
+✅ Dynamic UI Based on State
+
+## Example
+
+```jsx
+{
+  issues.length === 0 ? (
+    <h2>No Issues Found</h2>
+  ) : (
+    issues.map(...)
+  );
+}
+```
