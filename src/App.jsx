@@ -33,7 +33,13 @@ function App() {
     setTitle("");
     setPriority("");
   };
+  const deleteIssue = (indexToDelete) => {
+  const updatedIssues = issues.filter(
+    (_, index) => index !== indexToDelete
+  );
 
+  setIssues(updatedIssues);
+};
   return (
     <div>
       <Header />
@@ -57,15 +63,19 @@ function App() {
       <button onClick={addIssue}>
         Add Issue
       </button>
-
-      {issues.map((issue, index) => (
-        <IssueCard
-          key={index}
-          title={issue.title}
-          priority={issue.priority}
-          status={issue.status}
-        />
-      ))}
+  {issues.length === 0 ? (
+  <h2>No Issues Found</h2>
+) : (
+  issues.map((issue, index) => (
+    <IssueCard
+      key={index}
+      title={issue.title}
+      priority={issue.priority}
+      status={issue.status}
+      onDelete={() => deleteIssue(index)}
+    />
+  ))
+)}
 
       <Footer />
     </div>
