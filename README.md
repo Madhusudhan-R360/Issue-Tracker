@@ -248,3 +248,41 @@ Added issue creation form.
   );
 }
 ```
+# Day 6 - Search & Filtering
+
+## What I Learned
+
+- React can filter data dynamically using state.
+- The `filter()` method is used to search through arrays.
+- The `includes()` method helps check matching text.
+- User input can instantly update displayed data.
+
+## Concepts Covered
+
+- Search Functionality
+- Array filter()
+- String includes()
+- Real-Time Filtering
+- Derived Data
+
+## Project Update
+
+### Features Added
+
+✅ Search Box
+
+✅ Real-Time Search
+
+✅ Filtered Issue List
+
+✅ Dynamic Search Results
+
+## Example
+
+```jsx
+const filteredIssues = issues.filter((issue) =>
+  issue.title.toLowerCase().includes(
+    searchTerm.toLowerCase()
+  )
+);
+```
