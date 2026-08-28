@@ -20,7 +20,7 @@ function App() {
 
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
-
+  const [searchTerm, setSearchTerm] = useState("");
   const addIssue = () => {
     const newIssue = {
       title: title,
@@ -40,12 +40,22 @@ function App() {
 
   setIssues(updatedIssues);
 };
+  const filteredIssues = issues.filter((issue) =>
+  issue.title.toLowerCase().includes(
+    searchTerm.toLowerCase()
+  )
+);
   return (
     <div>
       <Header />
 
       <Sidebar />
-
+      <input
+  type="text"
+  placeholder="Search Issues"
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+/>
       <input
         type="text"
         placeholder="Issue Title"
@@ -63,10 +73,10 @@ function App() {
       <button onClick={addIssue}>
         Add Issue
       </button>
-  {issues.length === 0 ? (
+  {filteredIssues.length === 0 ?  (
   <h2>No Issues Found</h2>
 ) : (
-  issues.map((issue, index) => (
+  filteredIssues.map((issue, index) => (
     <IssueCard
       key={index}
       title={issue.title}
