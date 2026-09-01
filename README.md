@@ -286,3 +286,38 @@ const filteredIssues = issues.filter((issue) =>
   )
 );
 ```
+# Day 7 - Refactoring & Review
+
+## What I Learned
+
+- Large components should be split into smaller reusable components.
+- Props can pass both data and functions.
+- React applications become easier to maintain when responsibilities are separated.
+- Refactoring improves readability without changing functionality.
+
+## Concepts Covered
+
+- Component Refactoring
+- Component Composition
+- Passing Functions as Props
+- React Review
+
+## Project Update
+
+### New Components
+
+✅ SearchBar
+
+✅ IssueForm
+
+### Project Structure
+
+```text
+components
+├── Header.jsx
+├── Sidebar.jsx
+├── SearchBar.jsx
+├── IssueForm.jsx
+├── IssueCard.jsx
+└── Footer.jsx
+```
