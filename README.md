@@ -321,3 +321,77 @@ components
 ├── IssueCard.jsx
 └── Footer.jsx
 ```
+# Day 8 - useEffect & Loading State
+
+## What I Learned
+
+- `useEffect()` is used to perform side effects in React.
+- Side effects include API calls, timers, local storage operations, and event listeners.
+- The dependency array controls when `useEffect()` runs.
+- Loading states improve user experience while waiting for data.
+- `useEffect()` is commonly used to fetch data from APIs.
+
+## Concepts Covered
+
+- useEffect
+- Side Effects
+- Dependency Array
+- Loading State
+- Component Lifecycle Basics
+
+## Project Update
+
+### Features Added
+
+✅ Loading State
+
+✅ First use of `useEffect`
+
+✅ Simulated API Call using `setTimeout`
+
+✅ Conditional Rendering for Loading Screen
+
+## Example
+
+```jsx
+useEffect(() => {
+  setTimeout(() => {
+    setLoading(false);
+  }, 2000);
+}, []);
+```
+
+### Loading UI
+
+```jsx
+{loading ? (
+  <h2>Loading...</h2>
+) : (
+  filteredIssues.map(...)
+)}
+```
+
+## Key Takeaways
+
+- `useState()` stores data.
+- `useEffect()` performs actions.
+- The empty dependency array `[]` makes the effect run only once when the component loads.
+- Loading states are commonly used before displaying data.
+- Most API calls in React are made inside `useEffect()`.
+
+## Current Features
+
+✅ Add Issue
+
+✅ Delete Issue
+
+✅ Search Issues
+
+✅ Loading State
+
+✅ Form Handling
+
+✅ Dynamic Rendering
+
+✅ Reusable Components
+
