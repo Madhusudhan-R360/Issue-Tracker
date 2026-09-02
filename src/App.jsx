@@ -1,10 +1,10 @@
-import { useState } from "react";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import IssueCard from "./components/IssueCard";
 import Footer from "./components/Footer";
 import IssueForm from "./components/IssueForm";
 import SearchBar from "./components/SearchBar";
+import { useState, useEffect } from "react";
 
 function App() {
   const [issues, setIssues] = useState([
@@ -20,14 +20,21 @@ function App() {
     },
   ]);
 
+  const [loading, setLoading] = useState(true);
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
+
   const addIssue = () => {
     const newIssue = {
-      title: title,
-      priority: priority,
+      title,
+      priority,
       status: "Open",
     };
 
@@ -70,7 +77,9 @@ function App() {
         addIssue={addIssue}
       />
 
-      {filteredIssues.length === 0 ? (
+      {loading ? (
+        <h2>Loading...</h2>
+      ) : filteredIssues.length === 0 ? (
         <h2>No Issues Found</h2>
       ) : (
         filteredIssues.map((issue, index) => (
