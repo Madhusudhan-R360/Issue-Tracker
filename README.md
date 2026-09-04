@@ -395,3 +395,41 @@ useEffect(() => {
 
 ✅ Reusable Components
 
+# Day 9 - Fetching Data from API
+
+## What I Learned
+
+- React can fetch data from external APIs.
+- `fetch()` is used to make HTTP requests.
+- `useEffect()` is the ideal place for API calls.
+- Async/Await simplifies asynchronous code.
+- Error handling is important when working with APIs.
+
+## Concepts Covered
+
+- Fetch API
+- Async/Await
+- API Calls
+- Error Handling
+- State Updates from API Responses
+
+## Project Update
+
+### Features Added
+
+✅ First API Call
+
+✅ Async Data Loading
+
+✅ Error Handling
+
+✅ API Data Rendering
+
+## Example
+
+```jsx
+const response = await fetch(url);
+const data = await response.json();
+
+setPosts(data);
+```
