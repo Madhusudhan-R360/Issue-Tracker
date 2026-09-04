@@ -24,12 +24,28 @@ function App() {
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState("");
   useEffect(() => {
-    setTimeout(() => {
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/posts"
+      );
+
+      const data = await response.json();
+
+      setPosts(data.slice(0, 5));
+
       setLoading(false);
-    }, 2000);
-  }, []);
+    } catch (err) {
+      setError("Failed to fetch data");
+      setLoading(false);
+    }
+  };
+
+  fetchPosts();
+}, []);
 
   const addIssue = () => {
     const newIssue = {
@@ -92,7 +108,15 @@ function App() {
           />
         ))
       )}
+  <h2>API Posts</h2>
 
+{error && <p>{error}</p>}
+
+{posts.map((post) => (
+  <div key={post.id}>
+    <h4>{post.title}</h4>
+  </div>
+))}
       <Footer />
     </div>
   );
