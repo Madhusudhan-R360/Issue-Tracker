@@ -14,14 +14,39 @@ function IssueForm({
         onChange={(e) => setTitle(e.target.value)}
       />
 
-      <input
-        type="text"
-        placeholder="Priority"
+      <p>
+        Characters: {title.length}
+      </p>
+
+      <select
         value={priority}
         onChange={(e) => setPriority(e.target.value)}
-      />
+      >
+        <option value="">
+          Select Priority
+        </option>
 
-      <button onClick={addIssue}>
+        <option value="Low">
+          Low
+        </option>
+
+        <option value="Medium">
+          Medium
+        </option>
+
+        <option value="High">
+          High
+        </option>
+
+        <option value="Critical">
+          Critical
+        </option>
+      </select>
+
+      <button
+        onClick={addIssue}
+        disabled={!title.trim() || !priority}
+      >
         Add Issue
       </button>
     </div>

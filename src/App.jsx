@@ -21,33 +21,53 @@ function App() {
   ]);
 
   const [loading, setLoading] = useState(true);
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState("");
+
   const [title, setTitle] = useState("");
   const [priority, setPriority] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState("");
+
   useEffect(() => {
-  const fetchPosts = async () => {
-    try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts"
-      );
+    const fetchPosts = async () => {
+      try {
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
 
-      const data = await response.json();
+        const data = await response.json();
 
-      setPosts(data.slice(0, 5));
+        setPosts(data.slice(0, 5));
+        setLoading(false);
+      } catch (err) {
+        setError("Failed to fetch data");
+        setLoading(false);
+      }
+    };
 
-      setLoading(false);
-    } catch (err) {
-      setError("Failed to fetch data");
-      setLoading(false);
-    }
-  };
-
-  fetchPosts();
-}, []);
+    fetchPosts();
+  }, []);
 
   const addIssue = () => {
+    if (!title.trim() || !priority.trim()) {
+      alert("Title and Priority are required");
+      return;
+    }
+
+    const validPriorities = [
+      "Low",
+      "Medium",
+      "High",
+      "Critical",
+    ];
+
+    if (!validPriorities.includes(priority)) {
+      alert(
+        "Priority must be Low, Medium, High or Critical"
+      );
+      return;
+    }
+
     const newIssue = {
       title,
       priority,
@@ -108,15 +128,17 @@ function App() {
           />
         ))
       )}
-  <h2>API Posts</h2>
 
-{error && <p>{error}</p>}
+      <h2>API Posts</h2>
 
-{posts.map((post) => (
-  <div key={post.id}>
-    <h4>{post.title}</h4>
-  </div>
-))}
+      {error && <p>{error}</p>}
+
+      {posts.map((post) => (
+        <div key={post.id}>
+          <h4>{post.title}</h4>
+        </div>
+      ))}
+
       <Footer />
     </div>
   );
