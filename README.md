@@ -433,3 +433,38 @@ const data = await response.json();
 
 setPosts(data);
 ```
+# Day 10 - Form Validation
+
+## What I Learned
+
+- User input should be validated before processing.
+- Empty submissions should be prevented.
+- Buttons can be disabled based on conditions.
+- Validation improves application reliability and user experience.
+
+## Concepts Covered
+
+- Form Validation
+- Early Return
+- Disabled Buttons
+- User Input Validation
+
+## Project Update
+
+### Features Added
+
+✅ Required Fields
+
+✅ Disabled Submit Button
+
+✅ Priority Validation
+
+✅ Character Counter
+
+## Example
+
+```jsx
+if (!title.trim()) {
+  return;
+}
+```
