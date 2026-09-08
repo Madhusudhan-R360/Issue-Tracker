@@ -468,3 +468,44 @@ if (!title.trim()) {
   return;
 }
 ```
+# Day 11 - React Router
+
+## What I Learned
+
+- React Router enables navigation between pages.
+- SPA applications do not reload the page during navigation.
+- Routes map URLs to components.
+- Links are used for client-side navigation.
+
+## Concepts Covered
+
+- BrowserRouter
+- Routes
+- Route
+- Link
+- Client Side Routing
+
+## Project Update
+
+### Features Added
+
+✅ Multiple Pages
+
+✅ Navigation
+
+✅ URL-Based Routing
+
+✅ Dashboard Page
+
+✅ Issues Page
+
+✅ About Page
+
+## Example
+
+```jsx
+<Route
+  path="/issues"
+  element={<Issues />}
+/>
+```
