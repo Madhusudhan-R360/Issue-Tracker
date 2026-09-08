@@ -1,143 +1,45 @@
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import IssueCard from "./components/IssueCard";
 import Footer from "./components/Footer";
-import IssueForm from "./components/IssueForm";
-import SearchBar from "./components/SearchBar";
-import { useState, useEffect } from "react";
+
+import { Link, Route, Routes } from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard";
+import Issues from "./pages/Issues";
+import About from "./pages/About";
 
 function App() {
-  const [issues, setIssues] = useState([
-    {
-      title: "Login API Bug",
-      priority: "High",
-      status: "Open",
-    },
-    {
-      title: "Payment Gateway Error",
-      priority: "Medium",
-      status: "In Progress",
-    },
-  ]);
-
-  const [loading, setLoading] = useState(true);
-  const [posts, setPosts] = useState([]);
-  const [error, setError] = useState("");
-
-  const [title, setTitle] = useState("");
-  const [priority, setPriority] = useState("");
-  const [searchTerm, setSearchTerm] = useState("");
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/posts"
-        );
-
-        const data = await response.json();
-
-        setPosts(data.slice(0, 5));
-        setLoading(false);
-      } catch (err) {
-        setError("Failed to fetch data");
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
-  }, []);
-
-  const addIssue = () => {
-    if (!title.trim() || !priority.trim()) {
-      alert("Title and Priority are required");
-      return;
-    }
-
-    const validPriorities = [
-      "Low",
-      "Medium",
-      "High",
-      "Critical",
-    ];
-
-    if (!validPriorities.includes(priority)) {
-      alert(
-        "Priority must be Low, Medium, High or Critical"
-      );
-      return;
-    }
-
-    const newIssue = {
-      title,
-      priority,
-      status: "Open",
-    };
-
-    setIssues([...issues, newIssue]);
-
-    setTitle("");
-    setPriority("");
-  };
-
-  const deleteIssue = (indexToDelete) => {
-    const updatedIssues = issues.filter(
-      (_, index) => index !== indexToDelete
-    );
-
-    setIssues(updatedIssues);
-  };
-
-  const filteredIssues = issues.filter((issue) =>
-    issue.title
-      .toLowerCase()
-      .includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div>
       <Header />
 
-      <Sidebar />
+      <nav>
+        <Link to="/">Dashboard</Link>
+        <br />
 
-      <SearchBar
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-      />
+        <Link to="/issues">Issues</Link>
+        <br />
 
-      <IssueForm
-        title={title}
-        priority={priority}
-        setTitle={setTitle}
-        setPriority={setPriority}
-        addIssue={addIssue}
-      />
+        <Link to="/about">About</Link>
+      </nav>
 
-      {loading ? (
-        <h2>Loading...</h2>
-      ) : filteredIssues.length === 0 ? (
-        <h2>No Issues Found</h2>
-      ) : (
-        filteredIssues.map((issue, index) => (
-          <IssueCard
-            key={index}
-            title={issue.title}
-            priority={issue.priority}
-            status={issue.status}
-            onDelete={() => deleteIssue(index)}
-          />
-        ))
-      )}
+      <hr />
 
-      <h2>API Posts</h2>
+      <Routes>
+        <Route
+          path="/"
+          element={<Dashboard />}
+        />
 
-      {error && <p>{error}</p>}
+        <Route
+          path="/issues"
+          element={<Issues />}
+        />
 
-      {posts.map((post) => (
-        <div key={post.id}>
-          <h4>{post.title}</h4>
-        </div>
-      ))}
+        <Route
+          path="/about"
+          element={<About />}
+        />
+      </Routes>
 
       <Footer />
     </div>
